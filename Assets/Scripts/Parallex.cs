@@ -2,37 +2,76 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
-    private float startPos, length;
+    // Renamed 'startPos' to 'startPosX' for clarity
+    private float startPosX;
+    // NEW: Added a variable for the Y start position
+    private float startPosY;
+
+    // Renamed 'length' to 'lengthX' for clarity
+    private float lengthX;
+    // NEW: Added a variable for the sprite's height
+    private float heightY;
+
     public GameObject cam;
-    public float parallexEffect; // Speed at which background moves relative to camera
+
+    // Renamed 'parallexEffect' to 'parallaxEffectX' (fixed spelling)
+    public float parallaxEffectX;
+    // NEW: Added a separate effect for Y-axis
+    public float parallaxEffectY; 
 
     void Start()
     {
-        startPos = transform.position.x;
+        // Store the starting X and Y positions
+        startPosX = transform.position.x;
+        startPosY = transform.position.y; // NEW
+
         if (TryGetComponent<SpriteRenderer>(out var sr))
         {
-            length = sr.bounds.size.x;
+            // Get the width and height of the sprite
+            lengthX = sr.bounds.size.x;
+            heightY = sr.bounds.size.y; // NEW
         }
         else if (TryGetComponent<ParticleSystemRenderer>(out var psr))
         {
-            length = psr.bounds.size.x;
+            // Get the width and height of the particle system bounds
+            lengthX = psr.bounds.size.x;
+            heightY = psr.bounds.size.y; // NEW
         }
     }
 
     void FixedUpdate()
     {
-        float distance = cam.transform.position.x * parallexEffect;
-        float movement = cam.transform.position.x * (1 - parallexEffect);
-        transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
+        // Calculate horizontal distance and movement
+        float distanceX = cam.transform.position.x * parallaxEffectX;
+        float movementX = cam.transform.position.x * (1 - parallaxEffectX);
+        
+        // NEW: Calculate vertical distance and movement
+        float distanceY = cam.transform.position.y * parallaxEffectY;
+        float movementY = cam.transform.position.y * (1 - parallaxEffectY);
 
-        if (movement > startPos + length)
-        {
-            startPos += length;
-        }
-        else if (movement < startPos - length)
-        {
-            startPos -= length;
-        }
+        // NEW: Update the position on both X and Y axes
+        transform.position = new Vector3(startPosX + distanceX, startPosY + distanceY, transform.position.z);
 
+        // --- Horizontal (X-axis) Looping ---
+        // This is your original code, just using the new variable names
+        if (movementX > startPosX + lengthX)
+        {
+            startPosX += lengthX;
+        }
+        else if (movementX < startPosX - lengthX)
+        {
+            startPosX -= lengthX;
+        }
+        
+        // --- NEW: Vertical (Y-axis) Looping ---
+        // This mirrors the horizontal logic, but for the Y-axis
+        if (movementY > startPosY + heightY)
+        {
+            startPosY += heightY;
+        }
+        else if (movementY < startPosY - heightY)
+        {
+            startPosY -= heightY;
+        }
     }
 }

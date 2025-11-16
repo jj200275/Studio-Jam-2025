@@ -52,21 +52,16 @@ public class PlayerPickup : MonoBehaviour
         itemToPickUp.transform.localPosition = Vector3.zero;
         itemToPickUp.transform.localRotation = Quaternion.identity;
         
-        // --- !!! KEY CHANGES HERE !!! ---
-        
-        // 1. Get the collider
+        // --- SIMPLIFIED ---
+        // Just disable the collider so it doesn't get in the way.
         Collider2D col = itemToPickUp.GetComponent<Collider2D>();
         if (col != null)
         {
-            // 2. Keep it enabled, but make it a TRIGGER
-            //    This lets the NPC detect it
-            col.enabled = true;
-            col.isTrigger = true; 
+            col.enabled = false; 
         }
-
-        // 3. Change the tag
-        itemToPickUp.tag = "HeldItem"; 
-
+        
+        // (We removed the tag change)
+        
         itemInRange = null;
     }
 
@@ -75,20 +70,18 @@ public class PlayerPickup : MonoBehaviour
         // Un-parent the item
         heldItem.transform.SetParent(null);
 
-        // --- !!! KEY CHANGES HERE !!! ---
-        
-        // 1. Get the collider
+        // --- SIMPLIFIED ---
         Collider2D col = heldItem.GetComponent<Collider2D>();
         if (col != null)
         {
-            // 2. Re-enable it as a solid object
+            // Re-enable it as a trigger so we can walk through it
             col.enabled = true;
             col.isTrigger = true;
         }
 
-        // 3. Change the tag back
-        heldItem.tag = "Item";
-
+        // (We removed the tag change)
+        
+        heldItem.tag = "Item"; // Keep this line to make it "Item" again
         heldItem = null;
     }
 

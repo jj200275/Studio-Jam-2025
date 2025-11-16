@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 498457834189605250}
   - component: {fileID: 1667404868211945006}
   - component: {fileID: 7186236802616220768}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EmptyBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 235749056392520912}
   - component: {fileID: 2819217081988991587}
   - component: {fileID: 7143939219422410766}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FilledBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4979819811514405623}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BubblePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
