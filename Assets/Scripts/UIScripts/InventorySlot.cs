@@ -16,9 +16,21 @@ public class InventorySlot : MonoBehaviour
         icon.enabled = true;
     }
 
-    public void ClearSlot()
+    public void ClearSlot()  // call in player pickup code
     {
-        icon.enabled = false;  // Hide the icon entirely
-        icon.sprite = null;    // Make sure no old image stays
+        icon.enabled = false;  // hide the icon entirely
+        icon.sprite = null;    // make sure no old image stays
     }
 }
+
+// public InventorySlot uiSlot;
+
+// ItemData data = itemToPickUp.GetComponent<ItemData>();
+//     if (data != null)
+//     {
+//         uiSlot.SetIcon(data.itemIcon);
+//     }
+
+// uiSlot.ClearSlot();
+
+    
