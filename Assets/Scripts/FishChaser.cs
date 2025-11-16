@@ -85,10 +85,11 @@ public class FishChaser : MonoBehaviour
     }
 
     // --- NEW: This handles the "touching" ---
+    // --- UPDATED: This handles the "touching" ---
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if we touched the "HeldItem" and we aren't already fleeing
-        if (other.tag == "HeldItem" && !isFleeing && stolenItem == null)
+        // Check if we touched the "PLAYER" and we aren't already fleeing
+        if (other.tag == "Player" && !isFleeing && stolenItem == null)
         {
             if (playerInventory != null)
             {
