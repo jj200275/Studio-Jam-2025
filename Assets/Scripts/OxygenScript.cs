@@ -25,7 +25,7 @@ public class OxygenScript : MonoBehaviour
         }
     }
 
-    public void UpdateHearts()
+    public void updateBubbles()
     {
         for (int i = 0; i < bubbles.Length; i++)
         {
@@ -36,7 +36,7 @@ public class OxygenScript : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentOxygen = Mathf.Clamp(currentOxygen - amount, 0, bubbles.Length);  // keeps health between min/max range
-        UpdateHearts();
+        updateBubbles();
     }
 }
 
