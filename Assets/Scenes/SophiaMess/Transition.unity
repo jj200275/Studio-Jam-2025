@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 193483859}
   - component: {fileID: 193483858}
   - component: {fileID: 193483857}
+  - component: {fileID: 193483861}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -222,6 +223,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &193483861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193483856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d1a32be69304079971af3051dcedae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeScript
+  parentCanvas: {fileID: 193483860}
+  vignette: {fileID: 1057236029}
+  screenFadeSpeed: 1
+  displayTime: 2
+  fadeDuration: 0.5
+  testMode: 1
+  testAchievementPrefab: {fileID: 1358709389}
+  testIconSprite: {fileID: 0}
+  achievements: []
 --- !u!1 &220333060
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +426,6 @@ GameObject:
   - component: {fileID: 1057236027}
   - component: {fileID: 1057236030}
   - component: {fileID: 1057236029}
-  - component: {fileID: 1057236028}
   m_Layer: 5
   m_Name: FadeScreen
   m_TagString: Untagged
@@ -431,18 +452,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1057236028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057236026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd0fff96f8304e27b2e990e7c5c5443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &1057236029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -492,7 +501,6 @@ GameObject:
   - component: {fileID: 1358709390}
   - component: {fileID: 1358709393}
   - component: {fileID: 1358709392}
-  - component: {fileID: 1358709391}
   m_Layer: 5
   m_Name: Achievements
   m_TagString: Untagged
@@ -516,21 +524,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1, y: 267}
+  m_SizeDelta: {x: -516.9731, y: -554.048}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1358709391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358709389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd0fff96f8304e27b2e990e7c5c5443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &1358709392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
