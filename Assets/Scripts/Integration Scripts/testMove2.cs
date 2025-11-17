@@ -42,9 +42,34 @@ public class testMove2 : MonoBehaviour
 
         if (up) direction += Vector2.up;
         if (down) direction += Vector2.down;
-        if (left) { direction += Vector2.left; transform.localScale = new Vector3(-1, 1, 1); }
-        if (right) { direction += Vector2.right; transform.localScale = new Vector3(1, 1, 1); }
+        if (left) 
+        { 
+            direction += Vector2.left; 
+            
+            // Create a temporary variable to hold the current scale
+            Vector3 newScale = transform.localScale;
+            
+            // Set the x-component to the NEGATIVE of its absolute value
+            // This takes (2, 2, 2) and makes it (-2, 2, 2)
+            newScale.x = -Mathf.Abs(newScale.x); 
+            
+            // Apply the new scale
+            transform.localScale = newScale; 
+        }
+        if (right) 
+        { 
+            direction += Vector2.right; 
+            
+            // Create a temporary variable to hold the current scale
+            Vector3 newScale = transform.localScale;
 
+            // Set the x-component to the POSITIVE of its absolute value
+            // This takes (-2, 2, 2) and makes it (2, 2, 2)
+            newScale.x = Mathf.Abs(newScale.x); 
+            
+            // Apply the new scale
+            transform.localScale = newScale; 
+        }
         direction.Normalize();
         myBody.linearVelocity = speed * direction;
 

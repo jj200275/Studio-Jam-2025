@@ -5,6 +5,8 @@ public class NextSceneScript2 : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }

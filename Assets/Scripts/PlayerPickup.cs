@@ -3,6 +3,11 @@ using UnityEngine;
 public class PlayerPickup : MonoBehaviour
 {
     public Transform itemSlot;
+    
+    // --- NEW UI CODE ---
+    // Assign your UI slot object to this in the Inspector
+    public InventorySlot uiSlot; 
+    
     private GameObject heldItem;
     private GameObject itemInRange;
 
@@ -52,17 +57,24 @@ public class PlayerPickup : MonoBehaviour
         itemToPickUp.transform.localPosition = Vector3.zero;
         itemToPickUp.transform.localRotation = Quaternion.identity;
         
-        // --- SIMPLIFIED ---
-        // Just disable the collider so it doesn't get in the way.
         Collider2D col = itemToPickUp.GetComponent<Collider2D>();
         if (col != null)
         {
             col.enabled = false; 
         }
         
-        // (We removed the tag change)
-        
         itemInRange = null;
+        
+        // --- NEW UI CODE ---
+        // Get the ItemData script from the object we just picked up
+        ItemData data = itemToPickUp.GetComponent<ItemData>();
+        
+        // Check if we found the data and our UI slot is assigned
+        if (data != null && uiSlot != null)
+        {
+            // Set the icon in the UI slot
+            uiSlot.SetIcon(data.itemIcon);
+        }
     }
 
     void DropCurrentItem()
@@ -70,24 +82,24 @@ public class PlayerPickup : MonoBehaviour
         // Un-parent the item
         heldItem.transform.SetParent(null);
 
-        // --- SIMPLIFIED ---
         Collider2D col = heldItem.GetComponent<Collider2D>();
         if (col != null)
         {
-            // Re-enable it as a trigger so we can walk through it
             col.enabled = true;
             col.isTrigger = true;
         }
-
-        // (We removed the tag change)
         
-        heldItem.tag = "Item"; // Keep this line to make it "Item" again
+        heldItem.tag = "Item"; 
         heldItem = null;
+
+        // --- NEW UI CODE ---
+        // Clear the UI slot since we're no longer holding anything
+        if (uiSlot != null)
+        {
+            uiSlot.ClearSlot();
+        }
     }
 
-    // --- !!! NEW FUNCTION FOR NPC !!! ---
-    // This function lets an outside script (the NPC)
-    // take the item from the player.
     public GameObject StealItem()
     {
         if (heldItem == null)
@@ -96,14 +108,16 @@ public class PlayerPickup : MonoBehaviour
         }
 
         Debug.Log(heldItem.name + " was stolen from player!");
-
-        // Get a reference to the item
-        GameObject stolenItem = heldItem;
         
-        // Clear the player's hand
-        heldItem = null;
+        // --- NEW UI CODE ---
+        // Clear the UI slot because the fish stole the item
+        if (uiSlot != null)
+        {
+            uiSlot.ClearSlot();
+        }
 
-        // Return the stolen item to the NPC
+        GameObject stolenItem = heldItem;
+        heldItem = null;
         return stolenItem;
     }
 }
