@@ -8,6 +8,7 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] private CanvasGroup keysGroup;
     [SerializeField] private CanvasGroup oxygenInstruction;
     [SerializeField] private CanvasGroup staminaInstruction;
+    [SerializeField] private CanvasGroup tutorialEndText;
 
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private float keysVisibleTime = 3f;
@@ -23,6 +24,7 @@ public class TutorialScript : MonoBehaviour
         // start with instructions hidden
         oxygenInstruction.alpha = 0;
         staminaInstruction.alpha = 0;
+        tutorialEndText.alpha = 0;
 
         // // Keys fade in (optional if they start already visible)
         // yield return FadeCanvas(keysGroup, 1, fadeDuration);
@@ -46,6 +48,11 @@ public class TutorialScript : MonoBehaviour
         yield return FadeCanvas(staminaInstruction, 1, fadeDuration);
         yield return new WaitForSeconds(instructionVisibleTime);
         yield return FadeCanvas(staminaInstruction, 0, fadeDuration);
+
+        // tutorial end text fade in/out
+        yield return FadeCanvas(tutorialEndText, 1, fadeDuration);
+        yield return new WaitForSeconds(instructionVisibleTime);
+        yield return FadeCanvas(tutorialEndText, 0, fadeDuration);
     }
 
     private IEnumerator FadeCanvas(CanvasGroup cg, float targetAlpha, float duration)

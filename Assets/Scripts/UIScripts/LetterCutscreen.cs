@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class IntroCutsceneLetter : MonoBehaviour
+public class LetterCutscreen : MonoBehaviour
 {
     [Header("UI References")]
     public Image mainImage;       // image BEFORE fade - bottle
     public Sprite newSprite;      // image to show AFTER fade - letter0
     public Image fade;            // fullscreen black fade
-    public float fadeDuration = 3f;
+    public float fadeDuration = 2f;
 
     [Header("Continue Button")]
     public Button buttonToActivate; // show button after fade and swap
