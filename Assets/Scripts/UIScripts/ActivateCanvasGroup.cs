@@ -8,6 +8,9 @@ public class ActivateCanvasGroup : MonoBehaviour
 {
     // activates canvas group AND LOADS SCENE
     [Header("Canvas Groups")]
+    // public CanvasGroup startDayCanvas;      // set inactive
+    // public CanvasGroup playerBarsCanvas;    // set inactive
+
     public CanvasGroup deathCanvas;
     public CanvasGroup endLevelCanvas;
     public CanvasGroup labSuccessCanvas;  // end of game
@@ -32,6 +35,10 @@ public class ActivateCanvasGroup : MonoBehaviour
             if (playerDied)
             {
                 hasTriggered = true;
+
+                // startDayCanvas.gameObject.SetActive(false);
+                // playerBarsCanvas.gameObject.SetActive(false);
+
                 deathCanvas.gameObject.SetActive(true);
                 StartCoroutine(Fade.fadeCanvas(deathCanvas, 1f, 1f));
                 // scene of sceneIndex will load when player click button
@@ -40,12 +47,20 @@ public class ActivateCanvasGroup : MonoBehaviour
             else if (playerReachedEnd)
             {
                 hasTriggered = true;
+
+                // startDayCanvas.gameObject.SetActive(false);
+                // playerBarsCanvas.gameObject.SetActive(false);
+
                 StartCoroutine(FadeAndLoadScene(endLevelCanvas, sceneIndex));
             }
 
             else if (playerSucceeded)
             {
                 hasTriggered = true;
+
+                // startDayCanvas.gameObject.SetActive(false);
+                // playerBarsCanvas.gameObject.SetActive(false);
+
                 labSuccessText.text = $"\"Congratulations! You've saved {score} / 5 axolotls!\"";
             }
         }
@@ -84,10 +99,4 @@ public class ActivateCanvasGroup : MonoBehaviour
         {
             score = newScore;
         }
-
-    // public void LoadSceneByIndex(int sceneIndex)
-    // {
-    //     yield return new WaitForSeconds(2f); 
-    //     SceneManager.LoadScene(sceneIndex);
-    // }
 }
