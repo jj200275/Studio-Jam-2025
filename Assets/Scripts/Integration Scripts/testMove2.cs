@@ -25,6 +25,8 @@ public class testMove2 : MonoBehaviour
 
     void Start()
     {
+        sprintStaminaCost = 20f * (5 / (5 + directorScript.playerStamina));
+
         speed = 3 + directorScript.playerSpeed;
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();

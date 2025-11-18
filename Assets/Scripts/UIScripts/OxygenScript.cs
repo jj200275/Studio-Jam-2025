@@ -26,6 +26,8 @@ public class OxygenScript : MonoBehaviour
 
     void Start()
     {
+        timePerBubble = 10 + directorScript.playerTotalBreath;
+
         currentOxygen = bubbles.Length;
 
         // Start scene with full oxygen
