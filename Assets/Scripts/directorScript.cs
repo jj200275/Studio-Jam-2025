@@ -144,22 +144,48 @@ public class directorScript : MonoBehaviour
         // Check if we just finished Level 1
         if (currentLevel == 1)
         {
-            // Increment the level. Because it's static, this will be '2'
-            // when we return from the cutscene.
             currentLevel++;
 
-            // Store the name of the *current* scene (your main game scene)
             sceneToReturnTo = SceneManager.GetActiveScene().name;
 
-            // Load your cutscene.
-            // "CutsceneScene" must be the exact name of your cutscene file.
-            SceneManager.LoadScene("Scenes/Integration/Ends/ResurfaceEndLevel");
+            SceneManager.LoadScene("Scenes/Integration/Ends/StartDay2");
+        }else if (currentLevel == 2)
+        {
+            currentLevel++;
+
+            sceneToReturnTo = SceneManager.GetActiveScene().name;
+
+            SceneManager.LoadScene("Scenes/Integration/Ends/StartDay3");
+        }
+        else if (currentLevel == 3)
+        {
+            currentLevel++;
+
+            sceneToReturnTo = SceneManager.GetActiveScene().name;
+
+            SceneManager.LoadScene("Scenes/Integration/Ends/StartDay4");
+        }
+        else if (currentLevel == 4)
+        {
+            currentLevel++;
+
+            sceneToReturnTo = SceneManager.GetActiveScene().name;
+
+            SceneManager.LoadScene("Scenes/Integration/Ends/StartDay5");
+        }
+        else if (currentLevel == 5)
+        {
+            currentLevel = 6;
+            SceneManager.LoadScene("boss level");
+        } else if (currentLevel == 6)
+        {
+            SceneManager.LoadScene("LabSuccess");
         }
         else
         {
             // For any other level, just advance and reload this scene
             currentLevel++;
-            
+
             // Reloading the scene will trigger your Start() method again,
             // which will then load the next level's content.
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
