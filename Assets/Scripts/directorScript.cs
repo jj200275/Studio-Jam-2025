@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class directorScript : MonoBehaviour
 {
+    public static int playerVision;
+    public static int playerSpeed;
+    public static int playerStamina;
+    public static int playerDefense;
+    public static int playerTotalBreath;
+
     public int currentLevel;
 
     public GameObject fishPrefab;
