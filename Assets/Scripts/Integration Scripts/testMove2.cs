@@ -25,6 +25,7 @@ public class testMove2 : MonoBehaviour
 
     void Start()
     {
+        speed = 3 + directorScript.playerSpeed;
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
         myAnimator = GetComponent<Animator>();
