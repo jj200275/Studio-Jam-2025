@@ -138,13 +138,23 @@ public class FishChaser : MonoBehaviour
     // --- NEW: Helper function to flip sprite ---
     void FlipSprite(float directionX)
     {
+        // Get the current local scale
+        Vector3 newScale = transform.localScale;
+
         if (directionX < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            // Set the x-component to the NEGATIVE of its absolute value
+            // This preserves your custom scale (e.g., 2 -> -2)
+            newScale.x = -Mathf.Abs(newScale.x);
         }
         else if (directionX > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            // Set the x-component to the POSITIVE of its absolute value
+            // This preserves your custom scale (e.g., -2 -> 2)
+            newScale.x = Mathf.Abs(newScale.x);
         }
+        
+        // Apply the new scale
+        transform.localScale = newScale;
     }
 }
