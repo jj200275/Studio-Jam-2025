@@ -106,6 +106,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemIcon: {fileID: -5817265635338540737, guid: d9e9882c6a09e544d8d6d7d44f7b81bb, type: 3}
   achievementIcon: {fileID: 3699702187906555892, guid: 126fb01f8a0df75488551f5b619e7dab, type: 3}
+  visionBonus: 0
+  speedBonus: 0
+  staminaBonus: 0
+  defenseBonus: 0
+  breathBonus: 3
 --- !u!61 &-2671687777716254768
 BoxCollider2D:
   m_ObjectHideFlags: 0
