@@ -10,14 +10,19 @@ public class ActivateCanvasGroup : MonoBehaviour
     [Header("Canvas Groups")]
     public CanvasGroup deathCanvas;
     public CanvasGroup endLevelCanvas;
+    public CanvasGroup labSuccessCanvas;  // end of game
+
+    public TMP_Text labSuccessText;
 
     [Header("Game State Flags")]
     public bool playerDied = false;
     public bool playerReachedEnd = false;
+    public bool playerSucceeded = false;
     private bool hasTriggered = false; // prevent multiple triggers
 
     // NOT in Inspector
     private int sceneIndex = 0; // CHANGE TO WHAT SCENE NEED
+    private int score = 0;  // adjust
 
 
     private void Update()
@@ -29,28 +34,60 @@ public class ActivateCanvasGroup : MonoBehaviour
                 hasTriggered = true;
                 deathCanvas.gameObject.SetActive(true);
                 StartCoroutine(Fade.fadeCanvas(deathCanvas, 1f, 1f));
-                LoadSceneByIndex(sceneIndex);
+                // scene of sceneIndex will load when player click button
             }
+
             else if (playerReachedEnd)
             {
                 hasTriggered = true;
-                endLevelCanvas.gameObject.SetActive(true);
-                StartCoroutine(Fade.fadeCanvas(endLevelCanvas, 1f, 1f));
-                LoadSceneByIndex(sceneIndex);
+                StartCoroutine(FadeAndLoadScene(endLevelCanvas, sceneIndex));
+            }
+
+            else if (playerSucceeded)
+            {
+                hasTriggered = true;
+                labSuccessText.text = $"\"Congratulations! You've saved {score} / 5 axolotls!\"";
             }
         }
     }
 
-    public void LoadSceneByIndex(int sceneIndex)
-    {
-        // check if index is valid
-        if (sceneIndex >= 0 && sceneIndex < SceneManager.sceneCountInBuildSettings)
+
+        private IEnumerator FadeAndLoadScene(CanvasGroup canvasGroup, int sceneToLoad)
         {
-            SceneManager.LoadScene(sceneIndex);
+            if (canvasGroup != null)
+            {
+                canvasGroup.gameObject.SetActive(true);
+                yield return StartCoroutine(Fade.fadeCanvas(canvasGroup, 1f, 1f));
+            }
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(sceneToLoad);
         }
-        else
+
+// -------------------------
+//     BUTTON LOAD SCENE
+// -------------------------
+
+        public void LoadSceneNow() // for when player clicks button in death route
         {
-            Debug.LogError("Invalid scene index: " + sceneIndex);
+            SceneManager.LoadScene(sceneIndex); // loads the assigned scene
         }
-    }
+
+// -------------------------
+//         SETTERS
+// -------------------------
+        public void SetSceneIndex(int index)
+        {
+            sceneIndex = index;
+        }
+
+        public void SetScore(int newScore)
+        {
+            score = newScore;
+        }
+
+    // public void LoadSceneByIndex(int sceneIndex)
+    // {
+    //     yield return new WaitForSeconds(2f); 
+    //     SceneManager.LoadScene(sceneIndex);
+    // }
 }
