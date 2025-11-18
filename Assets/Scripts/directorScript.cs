@@ -10,7 +10,7 @@ public class directorScript : MonoBehaviour
     public static int playerDefense;
     public static int playerTotalBreath;
 
-    public int currentLevel;
+    public static int currentLevel;
 
     public GameObject fishPrefab;
 
@@ -26,31 +26,50 @@ public class directorScript : MonoBehaviour
     public List<GameObject> lvl5ItemSpawns = new List<GameObject>();
     public List<GameObject> lvl5FishSpawns = new List<GameObject>();
 
+    public GameObject level1tiles;
+    public GameObject level2tiles;
+    public GameObject level3tiles;
+    public GameObject level4tiles;
+    public GameObject level5tiles;
+
     // Create ItemSpawn/FishSpawn list per level, then assign the empty gameObjects that mark where potential spawns can happen into the corresponding lists
 
     private void Start()
     {
+        if(currentLevel <= 0) currentLevel = 1;
+
+        level1tiles.SetActive(false);
+        level2tiles.SetActive(false);
+        level3tiles.SetActive(false);
+        level4tiles.SetActive(false);
+        level5tiles.SetActive(false);
+
         switch (currentLevel)
         {
             case 1:
                 spawnItems(lvl1ItemSpawns);
                 spawnFish(lvl1FishSpawns);
+                level1tiles.SetActive(true);
                 break;
             case 2:
                 spawnItems(lvl2ItemSpawns);
                 spawnFish(lvl2FishSpawns);
+                level2tiles.SetActive(true);
                 break;
             case 3:
                 spawnItems(lvl3ItemSpawns);
                 spawnFish(lvl3FishSpawns);
+                level3tiles.SetActive(true);
                 break;
             case 4:
                 spawnItems(lvl4ItemSpawns);
                 spawnFish(lvl4FishSpawns);
+                level4tiles.SetActive(true);
                 break;
             case 5:
                 spawnItems(lvl5ItemSpawns);
                 spawnFish(lvl5FishSpawns);
+                level5tiles.SetActive(true);
                 break;
         }
     }

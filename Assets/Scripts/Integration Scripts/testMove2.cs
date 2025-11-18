@@ -4,6 +4,7 @@ public class testMove2 : MonoBehaviour
 {
     public Rigidbody2D myBody;
     public BoxCollider2D myCollider;
+    public Animator myAnimator;
 
     [Header("Movement")]
     public float speed;
@@ -26,6 +27,7 @@ public class testMove2 : MonoBehaviour
     {
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -70,6 +72,14 @@ public class testMove2 : MonoBehaviour
             // Apply the new scale
             transform.localScale = newScale; 
         }
+
+        bool amIMoving = false;
+        if (direction != Vector2.zero) {
+            amIMoving = true;
+        }
+        myAnimator.SetBool("Moving", amIMoving);
+
+
         direction.Normalize();
         myBody.linearVelocity = speed * direction;
 
