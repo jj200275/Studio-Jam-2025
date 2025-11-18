@@ -78,6 +78,18 @@ public class Fade : MonoBehaviour
         }
 
         canvas.alpha = targetAlpha;
+
+        // after fading in, enable interaction
+        if (targetAlpha > 0f)
+        {
+            canvas.interactable = true;
+            canvas.blocksRaycasts = true;
+        }
+        else // after fading out, disable interaction
+        {
+            canvas.interactable = false;
+            canvas.blocksRaycasts = false;
+        }
     }
 
 // -------------------------
