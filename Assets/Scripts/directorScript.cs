@@ -73,6 +73,14 @@ public class directorScript : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log(playerVision + "\n" + playerSpeed + "\n" + playerStamina + "\n" + playerDefense + "\n" + playerTotalBreath + "\n");
+        }
+    }
+
     public void spawnItems(List<GameObject> items)
     {
         List<GameObject> itemsToSpawn = new List<GameObject>(); // List of items that can be spawned in this level
