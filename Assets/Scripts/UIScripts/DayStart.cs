@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class DayStart : MonoBehaviour
 {
@@ -101,5 +101,18 @@ public class DayStart : MonoBehaviour
         // continue button
         continueButton.gameObject.SetActive(true);
         yield return Fade.fadeGraphic(continueButton.image, 1f, 1);
+    }
+
+    public void StartNextDay()
+    {
+        if (!string.IsNullOrEmpty(directorScript.sceneToReturnTo))
+        {
+            SceneManager.LoadScene(directorScript.sceneToReturnTo);
+        }
+        else
+        {
+            Debug.LogError("ERROR: sceneToReturnTo was not set by directorScript!");
+            SceneManager.LoadScene("Scenes/Integration/Levels"); // Fallback: Load main menu
+        }
     }
 }

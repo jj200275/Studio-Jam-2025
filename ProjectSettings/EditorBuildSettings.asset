@@ -32,6 +32,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Integration/Ends/ResurfaceEndLevel.unity
     guid: d4e6501fb804a2a42a17e0d4b1c6d055
+  - enabled: 1
+    path: Assets/Scenes/Integration/Ends/StartDay2.unity
+    guid: 51d6ef18912a444469883ae883ddddde
+  - enabled: 1
+    path: Assets/Scenes/Integration/Ends/StartDay3.unity
+    guid: 39461e04dd3116445ab17013f74b89bc
+  - enabled: 1
+    path: Assets/Scenes/Integration/Ends/StartDay4.unity
+    guid: e764ec35350317f4ca03b4bc56c00340
+  - enabled: 1
+    path: Assets/Scenes/Integration/Ends/StartDay5.unity
+    guid: 72a2f92c7753fa143ad7e248c7f7fc3b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
