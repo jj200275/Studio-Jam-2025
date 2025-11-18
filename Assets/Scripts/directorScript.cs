@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class directorScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class directorScript : MonoBehaviour
     public static int playerTotalBreath;
 
     public static int currentLevel;
+    public static string sceneToReturnTo;
 
     public GameObject fishPrefab;
 
@@ -123,6 +125,36 @@ public class directorScript : MonoBehaviour
         foreach (GameObject fishPos in fish)
         {
             Instantiate(fishPrefab, fishPos.transform);
+        }
+    }
+
+    /// <summary>
+    /// Call this method when the player exits a level (e.g., from a trigger).
+    /// </summary>
+    public void PlayerExitedLevel()
+    {
+        // Check if we just finished Level 1
+        if (currentLevel == 1)
+        {
+            // Increment the level. Because it's static, this will be '2'
+            // when we return from the cutscene.
+            currentLevel++;
+
+            // Store the name of the *current* scene (your main game scene)
+            sceneToReturnTo = SceneManager.GetActiveScene().name;
+
+            // Load your cutscene.
+            // "CutsceneScene" must be the exact name of your cutscene file.
+            SceneManager.LoadScene("Scenes/Integration/Ends/ResurfaceEndLevel");
+        }
+        else
+        {
+            // For any other level, just advance and reload this scene
+            currentLevel++;
+            
+            // Reloading the scene will trigger your Start() method again,
+            // which will then load the next level's content.
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

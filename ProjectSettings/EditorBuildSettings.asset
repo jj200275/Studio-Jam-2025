@@ -23,9 +23,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Integration/GameOver.unity
     guid: 445705c5386351c46bd9c9d1ad70f8eb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Integration/EndLevelScene.unity
     guid: 7adc22b5dcd22574e9004f08b9a4c8b9
+  - enabled: 1
+    path: Assets/Scenes/Integration/Ends/DrownEndLevel.unity
+    guid: 91586b8754943d04b91d1be29e69bc6d
+  - enabled: 1
+    path: Assets/Scenes/Integration/Ends/ResurfaceEndLevel.unity
+    guid: d4e6501fb804a2a42a17e0d4b1c6d055
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
