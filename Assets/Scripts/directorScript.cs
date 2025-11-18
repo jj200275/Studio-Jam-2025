@@ -6,6 +6,8 @@ public class directorScript : MonoBehaviour
 {
     public int currentLevel;
 
+    public GameObject fishPrefab;
+
     public List<GameObject> itemDatabase = new List<GameObject>();
     public List<GameObject> lvl1ItemSpawns = new List<GameObject>();
     public List<GameObject> lvl1FishSpawns = new List<GameObject>();
@@ -26,18 +28,23 @@ public class directorScript : MonoBehaviour
         {
             case 1:
                 spawnItems(lvl1ItemSpawns);
+                spawnFish(lvl1FishSpawns);
                 break;
             case 2:
                 spawnItems(lvl2ItemSpawns);
+                spawnFish(lvl2FishSpawns);
                 break;
             case 3:
                 spawnItems(lvl3ItemSpawns);
+                spawnFish(lvl3FishSpawns);
                 break;
             case 4:
                 spawnItems(lvl4ItemSpawns);
+                spawnFish(lvl4FishSpawns);
                 break;
             case 5:
                 spawnItems(lvl5ItemSpawns);
+                spawnFish(lvl5FishSpawns);
                 break;
         }
     }
@@ -85,6 +92,13 @@ public class directorScript : MonoBehaviour
             int i = Random.Range(0, itemsToSpawn.Count);
             Instantiate(itemsToSpawn[i], itemPos.transform);
             itemsToSpawn.RemoveAt(i);
+        }
+    }
+    public void spawnFish(List<GameObject> fish)
+    {
+        foreach (GameObject fishPos in fish)
+        {
+            Instantiate(fishPrefab, fishPos.transform);
         }
     }
 }
