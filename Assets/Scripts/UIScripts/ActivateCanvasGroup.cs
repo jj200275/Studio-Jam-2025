@@ -25,7 +25,7 @@ public class ActivateCanvasGroup : MonoBehaviour
 
     // NOT in Inspector
     private int sceneIndex = 0; // CHANGE TO WHAT SCENE NEED
-    private int score = 0;  // adjust
+    // private int score = 0;  // adjust
 
 
     private void Update()
@@ -57,11 +57,11 @@ public class ActivateCanvasGroup : MonoBehaviour
             else if (playerSucceeded)
             {
                 hasTriggered = true;
+                StartCoroutine(FadeAndLoadScene(endLevelCanvas, sceneIndex));  // change this to last scene
 
                 // startDayCanvas.gameObject.SetActive(false);
                 // playerBarsCanvas.gameObject.SetActive(false);
-
-                labSuccessText.text = $"\"Congratulations! You've saved {score} / 5 axolotls!\"";
+                // labSuccessText.text = $"\"Congratulations! You've saved {score} / 5 axolotls!\"";
             }
         }
     }
@@ -90,13 +90,13 @@ public class ActivateCanvasGroup : MonoBehaviour
 // -------------------------
 //         SETTERS
 // -------------------------
-        public void SetSceneIndex(int index)
-        {
-            sceneIndex = index;
-        }
+        // public void SetSceneIndex(int index)
+        // {
+        //     sceneIndex = index;
+        // }
 
-        public void SetScore(int newScore)
-        {
-            score = newScore;
-        }
+        // public void SetScore(int newScore)
+        // {
+        //     score = newScore;
+        // }
 }
