@@ -26,6 +26,11 @@ public class OxygenScript : MonoBehaviour
 
     void Start()
     {
+        if(directorScript.currentLevel == 6)
+        {
+            gameOverSceneName = "DrownEndLevel";
+        }
+
         timePerBubble = 10 + PlayerStats.playerTotalBreath;
 
         currentOxygen = bubbles.Length;

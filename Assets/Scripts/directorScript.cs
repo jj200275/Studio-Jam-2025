@@ -177,7 +177,8 @@ public class directorScript : MonoBehaviour
         {
             currentLevel = 6;
             SceneManager.LoadScene("boss level");
-        } else if (currentLevel == 6)
+        }
+        else if (currentLevel == 6)
         {
             SceneManager.LoadScene("LabSuccess");
         }
