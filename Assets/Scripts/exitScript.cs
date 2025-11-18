@@ -2,42 +2,71 @@ using UnityEngine;
 
 public class exitScript : MonoBehaviour
 {
-    // 1. Create a public slot for your sound file
     public AudioClip exitSound;
+    public directorScript gameDirector;
     
-    // 2. A private variable to hold our 'speaker'
     private AudioSource myAudioSource;
-
+    
+    // 1. --- Our new "state" variable ---
+    // This flag tracks if we are in the trigger or not.
+    private bool isNearLadder = false;
 
     void Start()
     {
-        // 3. Find the 'speaker' (AudioSource component) on this GameObject
         myAudioSource = GetComponent<AudioSource>();
-
-        // (Optional) Add one automatically if you forgot
         if (myAudioSource == null)
         {
             myAudioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    // 2. --- Use Update() to check for input ---
+    // Update() runs every single game frame, so it will 
+    // never miss your spacebar press.
+    void Update()
+    {
+        // We just check our two conditions:
+        // 1. Is our flag true? (Are we near the ladder?)
+        // 2. Did the player just press space?
+        if (isNearLadder && Input.GetKeyDown(KeyCode.Space))
+        {
+            // --- 4. PLAY THE SOUND! ---
+            if (exitSound != null)
+            {
+                myAudioSource.PlayOneShot(exitSound);
+            }
+
+            Debug.Log("SCENE END - Calling LevelEndScript");
+            
+            // Tell the director to handle the level change
+            gameDirector.PlayerExitedLevel();
+            
+            // (Optional) You might want to set this back to false
+            // so you can't press it multiple times.
+            // isNearLadder = false; 
+        }
+    }
+
+
+    // 3. --- Use Physics to set our state ---
+    // This runs ONCE when you first enter the trigger.
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ladder"))
         {
-            // Check for spacebar press
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // --- 4. PLAY THE SOUND! ---
-                // PlayOneShot is perfect for single, non-looping sounds
-                if (exitSound != null)
-                {
-                    myAudioSource.PlayOneShot(exitSound);
-                }
+            // Set our flag to true
+            isNearLadder = true;
+        }
+    }
 
-                Debug.Log("SCENE END - Calling LevelEndScript");
-                // GameManager.Instance.LevelCompleted(); // Your other logic
-            }
+    // 4. --- Use Physics to clear our state ---
+    // This runs ONCE when you leave the trigger.
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ladder"))
+        {
+            // Set our flag back to false
+            isNearLadder = false;
         }
     }
 }
