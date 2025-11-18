@@ -1880,7 +1880,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THIS IS YOUR STAMINA BAR... IT WILL NOT REPLENISH ONCE USED.
+  m_text: THIS IS YOUR STAMINA BAR.  ONCE USED, IT WILL NOT REPLENISH UNTIL THE NEXT
+    DAY.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94c052fbbeeb74621adbe4186440136b, type: 2}
   m_sharedMaterial: {fileID: -7222126963549293976, guid: 94c052fbbeeb74621adbe4186440136b, type: 2}
@@ -3099,6 +3100,11 @@ MonoBehaviour:
   - {fileID: 1209630001}
   - {fileID: 29058855}
   currentOxygen: 10
+  timePerBubble: 1
+  gameOverSceneName: GameOverScene
+  fadeImage: {fileID: 0}
+  fadeDuration: 1.5
+  gameCompleted: 0
 --- !u!114 &1057236032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52639,7 +52645,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NOW GO SAVE YOUR AXOLOTL FRIEND!
+  m_text: YOU CAN ONLY BRING BACK ONE ITEM. CHOOSE WISELY, AND RETURN TO THE SURFACE
+    BEFORE YOUR OXYGEN RUNS OUT.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94c052fbbeeb74621adbe4186440136b, type: 2}
   m_sharedMaterial: {fileID: -7222126963549293976, guid: 94c052fbbeeb74621adbe4186440136b, type: 2}

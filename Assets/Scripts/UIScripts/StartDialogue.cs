@@ -59,8 +59,8 @@ public class StartDialogue : MonoBehaviour
         string[] lines = {
             "\"Is that...\"",
             "\"Is that Seth???\"",
-            "\"Oh no. It looks like he and his friends have been abducted.\"",
-            "\"I've got to find a way to save them.\""
+            "\"Oh no. It looks like he's been abducted.\"",
+            "\"I've got to find a way to save him.\""
         };
 
         foreach (string line in lines)
