@@ -58,10 +58,32 @@ public class Fade : MonoBehaviour
         graphic.color = new Color(originalColor.r, originalColor.g, originalColor.b, targetAlpha);
     }
 
+// ------------------------------
+// FADE CanvasGroup USING ALPHA
+// ------------------------------
+    public static IEnumerator fadeCanvas(CanvasGroup canvas, float fadeDuration, float targetAlpha)
+    {
+        // make canvas interactable while visible
+        canvas.interactable = targetAlpha > 0;
+        canvas.blocksRaycasts = targetAlpha > 0;
+
+        float t = 0f;
+        float startAlpha = canvas.alpha;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            canvas.alpha = Mathf.Lerp(startAlpha, targetAlpha, t / fadeDuration);
+            yield return null;
+        }
+
+        canvas.alpha = targetAlpha;
+    }
+
 // -------------------------
 //      SET ALPHA
 // -------------------------
-     public static void setAlpha(Graphic graphic, float alpha)
+    public static void setAlpha(Graphic graphic, float alpha)
     {
         // preserve original RGB
         Color c = graphic.color;
