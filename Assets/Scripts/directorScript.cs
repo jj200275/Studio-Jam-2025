@@ -35,7 +35,7 @@ public class directorScript : MonoBehaviour
 
     private void Start()
     {
-        if(currentLevel <= 0) currentLevel = 1;
+        //if(currentLevel <= 0) currentLevel = 1;
 
         level1tiles.SetActive(false);
         level2tiles.SetActive(false);

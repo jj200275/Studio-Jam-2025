@@ -24,6 +24,7 @@ public class FishChaser : MonoBehaviour
     void Start()
     {
         moveSpeed = 3 * 5 / (directorScript.playerStamina + 5);
+        if (chaseRange > 10) moveSpeed = 5;
 
         rb = GetComponent<Rigidbody2D>();
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
