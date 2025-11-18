@@ -11,6 +11,12 @@ public class directorScript : MonoBehaviour
     public List<GameObject> lvl1FishSpawns = new List<GameObject>();
     public List<GameObject> lvl2ItemSpawns = new List<GameObject>();
     public List<GameObject> lvl2FishSpawns = new List<GameObject>();
+    public List<GameObject> lvl3ItemSpawns = new List<GameObject>();
+    public List<GameObject> lvl3FishSpawns = new List<GameObject>();
+    public List<GameObject> lvl4ItemSpawns = new List<GameObject>();
+    public List<GameObject> lvl4FishSpawns = new List<GameObject>();
+    public List<GameObject> lvl5ItemSpawns = new List<GameObject>();
+    public List<GameObject> lvl5FishSpawns = new List<GameObject>();
 
     // Create ItemSpawn/FishSpawn list per level, then assign the empty gameObjects that mark where potential spawns can happen into the corresponding lists
 
@@ -23,6 +29,15 @@ public class directorScript : MonoBehaviour
                 break;
             case 2:
                 spawnItems(lvl2ItemSpawns);
+                break;
+            case 3:
+                spawnItems(lvl3ItemSpawns);
+                break;
+            case 4:
+                spawnItems(lvl4ItemSpawns);
+                break;
+            case 5:
+                spawnItems(lvl5ItemSpawns);
                 break;
         }
     }
