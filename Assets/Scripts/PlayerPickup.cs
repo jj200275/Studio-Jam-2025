@@ -97,6 +97,8 @@ public class PlayerPickup : MonoBehaviour
         {
             uiSlot.SetIcon(data.itemIcon);
         }
+
+        PlayerStats.ApplyItemStats(data);
     }
 
     void DropCurrentItem()
@@ -119,6 +121,8 @@ public class PlayerPickup : MonoBehaviour
         {
             uiSlot.ClearSlot();
         }
+
+        PlayerStats.ResetStatsToBaseline();
     }
 
     public GameObject StealItem()
@@ -143,6 +147,8 @@ public class PlayerPickup : MonoBehaviour
         {
             uiSlot.ClearSlot();
         }
+
+        PlayerStats.ResetStatsToBaseline();
 
         GameObject stolenItem = heldItem;
         heldItem = null;
