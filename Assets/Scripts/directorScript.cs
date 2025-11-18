@@ -37,7 +37,7 @@ public class directorScript : MonoBehaviour
 
     private void Start()
     {
-        if(currentLevel <= 0) currentLevel = 1;
+        //if(currentLevel <= 0) currentLevel = 1;
 
         level1tiles.SetActive(false);
         level2tiles.SetActive(false);
@@ -72,6 +72,14 @@ public class directorScript : MonoBehaviour
                 spawnFish(lvl5FishSpawns);
                 level5tiles.SetActive(true);
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log(playerVision + "\n" + playerSpeed + "\n" + playerStamina + "\n" + playerDefense + "\n" + playerTotalBreath + "\n");
         }
     }
 
