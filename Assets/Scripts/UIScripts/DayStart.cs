@@ -109,32 +109,31 @@ public class DayStart : MonoBehaviour
         yield return Fade.fadeGraphic(continueButton.image, 1f, 1);
         continueButton.interactable = true;        // ensure button is interactable
         continueButton.onClick.RemoveAllListeners();
-        continueButton.onClick.AddListener(() =>
-        {
-            Debug.Log("Continue button clicked!");
-            dayCanvasGroup.Hide();
-            playerCanvasGroup.Show();
-        });
-
         // continueButton.onClick.AddListener(() =>
         // {
         //     Debug.Log("Continue button clicked!");
-
-        //     // deactivate THIS canvas group
-        //     CanvasGroup current = this.GetComponent<CanvasGroup>();
-        //     current.alpha = 0;
-        //     current.interactable = false;
-        //     current.blocksRaycasts = false;
-        //     current.gameObject.SetActive(false); // optional
-
-        //     // activate NEXT canvas group
-        //     if (nextCanvasGroup != null)
-        //     {
-        //         nextCanvasGroup.alpha = 1;
-        //         nextCanvasGroup.interactable = true;
-        //         nextCanvasGroup.blocksRaycasts = true;
-        //         nextCanvasGroup.gameObject.SetActive(true); // must be active
-        //     }
+        //     dayCanvasGroup.Hide();
+        //     playerCanvasGroup.Show();
         // });
+
+        continueButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Continue button clicked!");
+
+            // activate NEXT canvas group
+            if (playerCanvasGroup != null)
+            {
+                playerCanvasGroup.alpha = 1;
+                playerCanvasGroup.interactable = true;
+                playerCanvasGroup.blocksRaycasts = true;
+                playerCanvasGroup.gameObject.SetActive(true); // must be active
+            }
+
+            // deactivate day canvas group
+            dayCanvasGroup.alpha = 0;
+            dayCanvasGroup.interactable = false;
+            dayCanvasGroup.blocksRaycasts = false;
+            dayCanvasGroup.gameObject.SetActive(false); // optional
+        });
     }
 }

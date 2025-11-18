@@ -8,8 +8,8 @@ public class ActivateCanvasGroup : MonoBehaviour
 {
     // activates canvas group AND LOADS SCENE
     [Header("Canvas Groups")]
-    public CanvasGroup startDayCanvas;      // set inactive
-    public CanvasGroup playerBarsCanvas;    // set inactive
+    // public CanvasGroup startDayCanvas;      // set inactive
+    // public CanvasGroup playerBarsCanvas;    // set inactive
 
     public CanvasGroup deathCanvas;
     public CanvasGroup endLevelCanvas;
@@ -36,8 +36,8 @@ public class ActivateCanvasGroup : MonoBehaviour
             {
                 hasTriggered = true;
 
-                startDayCanvas.gameObject.SetActive(false);
-                playerBarsCanvas.gameObject.SetActive(false);
+                // startDayCanvas.gameObject.SetActive(false);
+                // playerBarsCanvas.gameObject.SetActive(false);
 
                 deathCanvas.gameObject.SetActive(true);
                 StartCoroutine(Fade.fadeCanvas(deathCanvas, 1f, 1f));
@@ -48,8 +48,8 @@ public class ActivateCanvasGroup : MonoBehaviour
             {
                 hasTriggered = true;
 
-                startDayCanvas.gameObject.SetActive(false);
-                playerBarsCanvas.gameObject.SetActive(false);
+                // startDayCanvas.gameObject.SetActive(false);
+                // playerBarsCanvas.gameObject.SetActive(false);
 
                 StartCoroutine(FadeAndLoadScene(endLevelCanvas, sceneIndex));
             }
@@ -58,8 +58,8 @@ public class ActivateCanvasGroup : MonoBehaviour
             {
                 hasTriggered = true;
 
-                startDayCanvas.gameObject.SetActive(false);
-                playerBarsCanvas.gameObject.SetActive(false);
+                // startDayCanvas.gameObject.SetActive(false);
+                // playerBarsCanvas.gameObject.SetActive(false);
 
                 labSuccessText.text = $"\"Congratulations! You've saved {score} / 5 axolotls!\"";
             }
