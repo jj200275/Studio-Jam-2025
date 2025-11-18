@@ -26,7 +26,7 @@ public class OxygenScript : MonoBehaviour
 
     void Start()
     {
-        timePerBubble = 10 + directorScript.playerTotalBreath;
+        timePerBubble = 10 + PlayerStats.playerTotalBreath;
 
         currentOxygen = bubbles.Length;
 
