@@ -83,6 +83,10 @@ public class Drown : MonoBehaviour
         // in case the game was paused.
         Time.timeScale = 1f;
 
+        // --- ADD THIS LINE ---
+        // This will set the static variable in directorScript to 0.
+        directorScript.currentLevel = 0;
+
         // Load the main menu (scene index 0), based on
         // your script's existing fallback logic.
         SceneManager.LoadScene("Scenes/Integration/Levels");
