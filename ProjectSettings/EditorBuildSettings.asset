@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Integration/Ends/StartDay5.unity
     guid: 72a2f92c7753fa143ad7e248c7f7fc3b
+  - enabled: 1
+    path: Assets/Scenes/Integration/BossLevel.unity
+    guid: bc389009902f6fa4bae89deba1625a89
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

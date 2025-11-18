@@ -176,11 +176,11 @@ public class directorScript : MonoBehaviour
         else if (currentLevel == 5)
         {
             currentLevel = 6;
-            SceneManager.LoadScene("boss level");
+            SceneManager.LoadScene("Scenes/Integration/BossLevel");
         }
         else if (currentLevel == 6)
         {
-            SceneManager.LoadScene("LabSuccess");
+            SceneManager.LoadScene("Scenes/Integration/Ends/LabSuccessEnd");
         }
         else
         {
